@@ -8,9 +8,6 @@ import { createRoot } from 'react-dom/client';
 axios.defaults.headers.common["Content-Type"] = "multipart/form-data";
 const root =createRoot(document.getElementById("root"));
 
-
-
-//  root.render(<App />);
 // console.log("Rendering app...");
 root.render(
   <React.StrictMode>

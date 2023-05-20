@@ -70,7 +70,7 @@ export const AuthContextProvider = ({ children }) => {
       setCurrentUser({...currentUser, token: access_token });
       console.log('token', access_token);
     }
-  }, [cookies]);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ 

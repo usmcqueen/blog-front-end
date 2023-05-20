@@ -7,6 +7,7 @@ import { format } from "date-fns";
 
 const Write = () => {
   const location = useLocation(); 
+  // console.log(location)
   const state = location.state || {};
   // console.log(state);
   const [title, setTitle] = useState(state?.title || ""); // should be title      
@@ -14,16 +15,14 @@ const Write = () => {
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState(state?.cat || ""); // should be cat
 
-
   const navigate = useNavigate()
   const date = format(new Date(), "yyyy-MM-dd HH:mm:ss");
-
 
   const upload = async () => {
     try{
       const formData = new FormData();
       formData.append("file", file);    
-      const res = await axios.post("http://127.0.0.1:8080/api/posts/upload", formData);
+      const res = await axios.post("http://127.0.0.1:8080/api/upload", formData);
       return res.data;
     } catch (error) {
       // console.log(error)
@@ -36,17 +35,18 @@ const Write = () => {
     // console.log(imgUrl);
   
     try {
-      state ? await axios.put(`api/posts/${state.id}`, {
-        title, 
-        content: content,
-        cat,
-        img :file ? imgUrl : "",
-        date: format(new Date(), "yyyy-MM-dd HH:mm:ss"),
-      }) : await axios.post(`api/posts/`, {
+      // state ? await axios.put(`api/posts/${state.id}`, {
+      //   title, 
+      //   content: content,
+      //   cat,
+      //   img :file ? imgUrl : "",
+      //   date: format(new Date(), "yyyy-MM-dd HH:mm:ss"),
+      // }) : 
+      await axios.post(`api/posts/`, {
           title, 
           content: content,
           cat,
-          img :file ? imgUrl : "",
+          img: file ? imgUrl : "",
           date: format(new Date(), "yyyy-MM-dd HH:mm:ss"),
 
       });
@@ -56,7 +56,6 @@ const Write = () => {
     }
   };
   
-
   return (
     <div className="add">
       <div className="content">
@@ -74,7 +73,8 @@ const Write = () => {
           <span>
             <b>Visibility:</b> Public
           </span>
-          <input style={{ display: "none" }} type="file" id="file" name="file" onChange={e=>setFile(e.target.files[0])} />
+          <input 
+          type="file" id="file" name="file" onChange={e=>setFile(e.target.files[0])} />
           {/* <input type="file" id="file" name="file" onChange={e=>setFile(e.target.files[0])} /> */}
           <label className="file" htmlFor="file"> Upload Image </label>
           <div className="buttons">

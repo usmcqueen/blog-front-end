@@ -76,9 +76,9 @@ const Home = () => {
         {posts.map((post) => (
           <div className="post" key={post.id}>          
             <div className="img">
-            {/* <img src={`${process.env.PUBLIC_URL}/uploads/${post.img}`} alt="" /> */}
+            <img src={`${process.env.PUBLIC_URL}/uploads/${post.img}`} alt="" />
             {/* <img src={`${post.img}`} alt="" /> */}
-            <img src={post.img} alt="" />
+            {/* <img src={`../../public/uploads/${post.img}`} alt="" /> */}
             </div>
             <div className="content">
             {/* title, desc:value, cat, img:file ? imgUrl :"" */}
