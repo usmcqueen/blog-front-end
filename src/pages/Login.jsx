@@ -12,10 +12,8 @@ const Login = () => {
     password: "",
   
   })
-
   const [error, setError] = useState(null);
   // console.log(inputs.username);
- 
 
   const navigate = useNavigate();
   // console.log(inputs);

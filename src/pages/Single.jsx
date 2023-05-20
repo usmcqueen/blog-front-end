@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext.js";
 // import DOMPurify from "dompurify";
 
+
 const Single = () => {
 
   const [post, setPost] = useState({});
@@ -29,7 +30,7 @@ const Single = () => {
         const res = await axios.get(`/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
-        // console.log(err);
+        // console.log('Post:', response.data);
       }
     };
     fetchData();
@@ -67,6 +68,10 @@ const Single = () => {
 
   };
 
+  const formattedDate = new Date(post.date);
+const distanceToNow = formatDistanceToNow(formattedDate, { addSuffix: true });
+
+
   //   try {
   //     await fetch("/addPost", {
   //       method: "POST",
@@ -90,7 +95,7 @@ const Single = () => {
 
         <div className="info">
           <span>{currentUser.username}</span>
-          <p>Posted {formatDistanceToNow(new Date(post.date), { addSuffix: true})}</p>
+          <p>Posted {distanceToNow}</p>
         </div>
         {currentUser.username === post.username && (
           <div className="edit">

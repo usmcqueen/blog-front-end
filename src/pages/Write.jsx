@@ -8,6 +8,7 @@ import { format } from "date-fns";
 const Write = () => {
   const location = useLocation(); 
   const state = location.state || {};
+  // console.log(state);
   const [title, setTitle] = useState(state?.title || ""); // should be title      
   const [content, setContent] = useState(state?.content || ""); // should be content
   const [file, setFile] = useState(null);
@@ -22,10 +23,10 @@ const Write = () => {
     try{
       const formData = new FormData();
       formData.append("file", file);    
-      const res = await axios.post("http://localhost:8080/api/posts/upload", formData);
+      const res = await axios.post("http://127.0.0.1:8080/api/posts/upload", formData);
       return res.data;
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   };
 
@@ -68,7 +69,7 @@ const Write = () => {
         <div className="item">
           <h1>Publish</h1>
           <span>
-            <b>Staus:</b>Draft 
+            {/* <b>Staus:</b>Draft  */}
           </span>
           <span>
             <b>Visibility:</b> Public

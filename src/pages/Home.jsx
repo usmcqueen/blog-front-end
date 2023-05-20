@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from 'dompurify';
 
-const baseUrl = "http://localhost:8080"
+const baseUrl = "http://127.0.0.1:8080"
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
