@@ -9,17 +9,17 @@ const baseUrl = "http://127.0.0.1:8080"
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
-  const cat = useLocation();
-  // console.log('category', cat)
+  const cat = useLocation().search;
+  console.log('category', cat)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/posts`);
-        // console.log(res)
+        const res = await axios.get(`${baseUrl}/api/posts${cat}`);
+        console.log(res.data)
         setPosts(res.data);
       } catch(error) {
-        console.log(error);
+        console.log('home error: ', error);
       }
     };
     fetchData();
@@ -76,12 +76,9 @@ const Home = () => {
         {posts.map((post) => (
           <div className="post" key={post.id}>          
             <div className="img">
-            <img src={`${process.env.PUBLIC_URL}/uploads/${post.img}`} alt="" />
-            {/* <img src={`${post.img}`} alt="" /> */}
-            {/* <img src={`../../public/uploads/${post.img}`} alt="" /> */}
+            <img src={`../../public/uploads/${post.img}`} alt="" />
             </div>
             <div className="content">
-            {/* title, desc:value, cat, img:file ? imgUrl :"" */}
               <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>

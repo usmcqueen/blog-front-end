@@ -4,41 +4,50 @@ import { useParams } from "react-router-dom";
 import Edit from "../img/edit.png";
 import Delete from "../img/delete.png";
 import Menu from "../components/Menu";
-import { formatDistanceToNow } from "date-fns";
+// import { formatDistanceToNow } from "date-fns";
+import moment from "moment";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext.js";
 // import DOMPurify from "dompurify";
 
+const baseUrl = "http://127.0.0.1:8080"
 
 const Single = () => {
 
   const [post, setPost] = useState({});
+  // const [postId, setPostId] = useState('')
   const location = useLocation();
+  const uid = useParams().uid
+  // setPostId(uid)
   const navigate = useNavigate();
-  const postId = location.pathname.split("/")[2];
+
+  // const postId = location.pathname.split("/")[2];
+  
   // const { userId, id } = useParams();
   const { currentUser } = useContext(AuthContext);
   const fileInput = useRef(null); // Define fileInput using useRef
 
-  // console.log('user data: ', currentUser)
+  // console.log('postid: ', postId)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/posts/${postId}`);
+        const res = await axios.get(`${baseUrl}/api/posts/${uid}`);
+        console.log('single post: ', res.data)
         setPost(res.data);
       } catch (err) {
-        // console.log('Post:', response.data);
+        // console.log('Post:', response.data);\
+        console.log('single get error: ', err)
       }
     };
     fetchData();
-  }, [postId]);
+  }, [uid]);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/posts/${postId}`);
+      await axios.delete(`/posts/${uid}`);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -60,7 +69,7 @@ const Single = () => {
       formData.append("img", fileInput.current.files[0]);
 
       // Make the POST request to update the post
-      await axios.post(`/posts/${postId}`, formData);
+      await axios.post(`/posts/${uid}`, formData);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -68,8 +77,8 @@ const Single = () => {
 
   };
 
-  const formattedDate = new Date(post.date);
-const distanceToNow = formatDistanceToNow(formattedDate, { addSuffix: true });
+  // const formattedDate = new Date(post.date);
+  // const distanceToNow = formatDistanceToNow(formattedDate, { addSuffix: true, includeSeconds: true });
 
 
   //   try {
@@ -87,29 +96,30 @@ const distanceToNow = formatDistanceToNow(formattedDate, { addSuffix: true });
   return (
     <div className="single">
       <div className="content">
-        <img src={`./upload/${post?.img}`} alt="" />
-      </div>
-      <div className="user">
-        {/* {post.img && <img src={post.img} alt="" />} */}
-        {post.userImg && <img src={post.userImg} alt="" />}
+        <img src={`../../public/uploads/${post?.img}`} alt="" />
 
-        <div className="info">
-          <span>{currentUser.username}</span>
-          <p>Posted {distanceToNow}</p>
-        </div>
-        {currentUser.username === post.username && (
-          <div className="edit">
-            <Link to={`/write?edit=2`} state={post}>
-              <img src={Edit} alt="" />
-            </Link>
-            <img onClick={handleDelete} source={Delete} alt="" />
+        <div className="user">
+          {/* {post.img && <img src={post.img} alt="" />} */}
+          {post.userImg && <img src={post.userImg} alt="" />}
+
+          <div className="info">
+            <span>{currentUser.username}</span>
+            <p>Posted {moment(post.date).fromNow()}</p>
           </div>
-        )}
+          {currentUser.username === post.username && (
+            <div className="edit">
+              <Link to={`/write?edit=2`} state={post}>
+                <img src={Edit} alt="" />
+              </Link>
+              <img onClick={handleDelete} src={Delete} alt="" />
+            </div>
+          )}
+        </div>
+        <h1>{post.title}</h1>
+        <p>
+          {getText(post.content)}
+        </p>
       </div>
-      <h1>{post.title}</h1>
-      <p>
-        {getText(post.content)}
-      </p>
       <Menu cat={post.cat} />
 
       {/* Form for creating a new post */}
