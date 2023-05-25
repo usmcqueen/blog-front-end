@@ -22,18 +22,18 @@ const Navbar = () => {
           <Link className="link" to="/?cat=baseball">
             <h6>Baseball</h6>
           </Link>
-          {/* <Link className="link" to="/?cat=disney"> */}
-            {/* <h6>Disney</h6> */}
-          {/* </Link> */}
-          {/* <Link className="link" to="/?cat=science"> */}
-            {/* <h6>Science</h6>
+          <Link className="link" to="/?cat=disney"> 
+            <h6>Disney</h6>
+          </Link> 
+          <Link className="link" to="/?cat=science">
+            <h6>Science</h6>
           </Link>
           <Link className="link" to="/?cat=technology">
             <h6>Technology</h6>
           </Link>
           <Link className="link" to="/?cat=food">
             <h6>Food</h6>
-          </Link>  */}
+          </Link> 
           <span>{currentUser?.username}</span>  
           {currentUser ? (
             <span onClick={logout}>Logout</span>

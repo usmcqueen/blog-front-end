@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from 'dompurify';
+// import myImage from '../../public/uploads/1684988964737bluefiary.jpeg'
 
-const baseUrl = "http://127.0.0.1:8080"
+const baseUrl = "http://localhost:8080"
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
   const cat = useLocation().search;
-  console.log('category', cat)
+  // console.log('category', cat)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,7 @@ const Home = () => {
         const res = await axios.get(`${baseUrl}/api/posts${cat}`);
         console.log(res.data)
         setPosts(res.data);
-      } catch(error) {
+      } catch (error) {
         console.log('home error: ', error);
       }
     };
@@ -37,7 +38,7 @@ const Home = () => {
   //     id: 2,
   //     title: "Lorem Ipsum Sit",
   //     desc: "Lorem ipsum sit amet, consectetur adipiscing elit. Maecenas sed faucibus orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
-      // img: "https://dummyimage.com/300x200/000/fff&text=Image+2",
+  // img: "https://dummyimage.com/300x200/000/fff&text=Image+2",
   //   },
   //   {
   //     id: 3,
@@ -69,14 +70,15 @@ const Home = () => {
   const getText = (html) => {
     return DOMPurify.sanitize(html, { ALLOWED_TAGS: [] });
   };
-  
+
   return (
     <div className="home">
       <div className="posts">
         {posts.map((post) => (
-          <div className="post" key={post.id}>          
+          <div className="post" key={post.id}>
             <div className="img">
-            <img src={`../../public/uploads/${post.img}`} alt="" />
+              <img src={`../../public/uploads/${post?.img}`} alt="not showing" />
+             {/* <img src={`http://localhost:3000/public/uploads/1684988964737bluefiary.jpeg`} alt="not showing" /> */}
             </div>
             <div className="content">
               <Link className="link" to={`/post/${post.id}`}>
@@ -84,7 +86,7 @@ const Home = () => {
               </Link>
               <p>{getText(post.content)}</p>
               <Link className="link" to={`/post/${post.id}`}>
-              <button>Read More</button>
+                <button>Read More</button>
               </Link>
             </div>
           </div>

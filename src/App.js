@@ -13,9 +13,16 @@ import SciencePosts from "./pages/SciencePosts";
 import TechnologyPosts from "./pages/TechnologyPosts";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+import axios from "axios";
 import "./pages/style.scss";
+
 // import postRoutes from "./posts.js";
 // import postRoutes from "./routes/posts.js";
+
+// Include credential with every request by default 
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:8080';
 
 const Layout = ({ children }) => {
   return (

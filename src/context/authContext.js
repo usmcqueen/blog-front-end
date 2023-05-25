@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  console.log(currentUser);
+  // console.log(currentUser);
   // const cookies = new Cookies();
 
   const cookies = useMemo(() => {
@@ -17,14 +17,14 @@ export const AuthContextProvider = ({ children }) => {
   const login = async (inputs) => {
     try {
       const token = cookies.get("access_token");
+     
       const res = await axios.post(
-        "http://127.0.0.1:8080/api/auth/login",
-        // "http://localhost:8080/api/login",
+        "http://localhost:8080/api/auth/login",
         inputs,
         {withCredentials: true},
         // { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log('login response', res.headers, token)
+      console.log('login response', res.data)
 
       setCurrentUser(res.data);
 
@@ -38,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
         sameSite: "none",
         secure: true,
       });
-      console.log('cookies response', cookies)
+      // console.log('cookies response', cookies)
     } catch (error) {
       console.error("Error during login", error);
     }
@@ -46,10 +46,10 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://127.0.0.1:8080/api/auth/logout");
+      await axios.post("http://localhost:8080/api/auth/logout");
       setCurrentUser(null);
       // remove the authentication token cookie
-      cookies.remove("access_token");
+      // cookies.remove("access_token");
     } catch (error) {
       console.error("Error during logout", error);
     }
@@ -65,6 +65,7 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     // get the authentication token from the cookie when the component mounts
+    // Mechanism for persisting user info 
     const access_token = cookies.get("access_token");
     if (access_token) {
       setCurrentUser({...currentUser, token: access_token });

@@ -12,7 +12,6 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext.js";
 // import DOMPurify from "dompurify";
 
-const baseUrl = "http://127.0.0.1:8080"
 
 const Single = () => {
 
@@ -24,7 +23,7 @@ const Single = () => {
   const navigate = useNavigate();
 
   // const postId = location.pathname.split("/")[2];
-  
+
   // const { userId, id } = useParams();
   const { currentUser } = useContext(AuthContext);
   const fileInput = useRef(null); // Define fileInput using useRef
@@ -34,7 +33,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/posts/${uid}`);
+        const res = await axios.get(`/api/posts/${uid}`);
         console.log('single post: ', res.data)
         setPost(res.data);
       } catch (err) {
@@ -99,9 +98,7 @@ const Single = () => {
         <img src={`../../public/uploads/${post?.img}`} alt="" />
 
         <div className="user">
-          {/* {post.img && <img src={post.img} alt="" />} */}
           {post.userImg && <img src={post.userImg} alt="" />}
-
           <div className="info">
             <span>{currentUser.username}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
