@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const baseUrl = "http://localhost:8080"
+// const baseUrl = "http://localhost:8080"
 
 const Menu = ({ cat }) => {
   // console.log('menu cat: ', cat)

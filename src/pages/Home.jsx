@@ -32,7 +32,7 @@ const Home = () => {
   //     title: "Lorem Ipsum Dolor",
   //     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur eleifend elit, sed accumsan lorem lobortis eu. Sed vel lobortis quam.",
   //     img: "https://dummyimage.com/300x200/000/fff&text=Image+1",
-  //     // img: <img src={`../upload/img/abstractwater.jpg${post.img}`} alt="water" />
+      // img: <img src={`../upload/img/abstractwater.jpg${post.img}`} alt="water" />
   //   },
   //   {
   //     id: 2,

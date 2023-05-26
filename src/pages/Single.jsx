@@ -34,7 +34,7 @@ const Single = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`/api/posts/${uid}`);
-        console.log('single post: ', res.data)
+        // console.log('single post: ', res.data)
         setPost(res.data);
       } catch (err) {
         // console.log('Post:', response.data);\
@@ -44,13 +44,26 @@ const Single = () => {
     fetchData();
   }, [uid]);
 
-  const handleDelete = async () => {
-    try {
-      await axios.delete(`/posts/${uid}`);
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
+  // const handleDelete = async () => {
+  //   try {
+  //     const res = await axios.delete(`/api/posts/${uid}`);
+  //     console.log(res.data);
+  //     navigate("/");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  const handleDelete = (req, res) => {
+    axios
+      .delete(`/api/posts/${uid}`)
+      .then(res => {
+        console.log(res.data);
+        navigate("/");
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   const getText = (html) => {
@@ -96,11 +109,11 @@ const Single = () => {
     <div className="single">
       <div className="content">
         <img src={`../../public/uploads/${post?.img}`} alt="" />
-
         <div className="user">
           {post.userImg && <img src={post.userImg} alt="" />}
           <div className="info">
             <span>{currentUser.username}</span>
+            {/* <span>{post.username}</span> */}
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
           {currentUser.username === post.username && (

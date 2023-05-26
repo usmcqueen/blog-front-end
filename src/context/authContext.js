@@ -55,6 +55,10 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(currentUser));
+  }, [currentUser])
+
   // useEffect(() => {
   //   const accessToken = document.cookie
   //   .split("; ")

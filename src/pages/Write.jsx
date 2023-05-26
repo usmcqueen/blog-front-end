@@ -32,9 +32,29 @@ const Write = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const imgUrl = await upload();
-    console.log(imgUrl);
+    // console.log(imgUrl);
 
     try {
+      let res;
+
+      if (state) {
+        res = await axios.put(`http://localhost:8080/api/posts/${state.id}`, {
+          title: title,
+          content: content,
+          cat: cat,
+          img: file ? imgUrl : null,
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        });
+      } else {
+        res = await axios.post(`http://localhost:8080/api/posts/`, {
+          title: title,
+          content: content,
+          cat: cat,
+          img: file ? imgUrl : null,
+          date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+        });
+      }
+
       // state ? await axios.put(`api/posts/${state.id}`, {
       //   title: title, 
       //   content: content,
@@ -43,13 +63,15 @@ const Write = () => {
       //   date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
 
       // }) : 
-      const res = await axios.post(`http://localhost:8080/api/posts/`, {
-        title: title,
-        content: content,
-        cat: cat,
-        img: file ? imgUrl : null,
-        date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-      });
+
+
+      // const res = await axios.post(`http://localhost:8080/api/posts/`, {
+      //   title: title,
+      //   content: content,
+      //   cat: cat,
+      //   img: file ? imgUrl : null,
+      //   date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+      // });
       console.log(res.data)
       navigate("/");
     } catch (error) {
@@ -74,8 +96,13 @@ const Write = () => {
           <span>
             <b>Visibility:</b> Public
           </span>
-          <input
-            type="file" id="file" name="file" onChange={e => setFile(e.target.files[0])} />
+          <form action="/upload" method="POST" encType="multipart/form-data">
+            <input
+              type="file"
+              id="file"
+              name="file"
+              onChange={e => setFile(e.target.files[0])} />
+          </form>
           <label className="file" htmlFor="file"> Upload Image </label>
           <div className="buttons">
             <button>Save as a Draft</button>
@@ -93,24 +120,24 @@ const Write = () => {
             <label htmlFor="baseball">Baseball</label>
           </div>
 
-          <div className="cat">
+          {/* <div className="cat">
             <input type="radio" checked={cat === "Disney"} name="cat" value="Disney" id="Disney" onChange={e => setCat(e.target.value)} />
             <label htmlFor="disney">Disney</label>
-          </div>
+          </div> */}
 
-          <div className="cat">
+          {/* <div className="cat">
             <input type="radio" checked={cat === "Science"} name="cat" value="Science" id="Science" onChange={e => setCat(e.target.value)} />
             <label htmlFor="science">Science</label>
-          </div>
+          </div> */}
 
           <div className="cat">
             <input type="radio" checked={cat === "Technology"} name="cat" value="Technology" id="Technology" onChange={e => setCat(e.target.value)} />
-            <label htmlFor="technology">Technology</label>
+            <label htmlFor="Technology">Technology</label>
           </div>
-          <div className="cat">
+          {/* <div className="cat">
             <input type="radio" checked={cat === "Food"} name="cat" value="Food" id="Food" onChange={e => setCat(e.target.value)} />
             <label htmlFor="food">Food</label>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

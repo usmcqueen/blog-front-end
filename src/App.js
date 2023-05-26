@@ -6,10 +6,10 @@ import Write from "./pages/Write";
 import Home from "./pages/Home";
 import Single from "./pages/Single";
 import MusicPosts from "./pages/MusicPosts";
-import DisneyPosts from "./pages/DisneyPosts";
+// import DisneyPosts from "./pages/DisneyPosts";
 import BaseballPosts from "./pages/BaseballPosts";
-import FoodPosts from "./pages/FoodPosts";
-import SciencePosts from "./pages/SciencePosts";
+// import FoodPosts from "./pages/FoodPosts";
+// import SciencePosts from "./pages/SciencePosts";
 import TechnologyPosts from "./pages/TechnologyPosts";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -43,10 +43,10 @@ function App() {
           <Route path="/write" element={<Write />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} /> 
-          <Route path="/food" element={<FoodPosts />} />  
-          <Route path="/technology" element={<TechnologyPosts />} />  
-          <Route path="/science" element={<SciencePosts />} />  
-          <Route path="/disney" element={<DisneyPosts />} />  
+          {/* <Route path="/food" element={<FoodPosts />} />   */}
+          <Route path="/Technology" element={<TechnologyPosts />} />  
+          {/* <Route path="/science" element={<SciencePosts />} />   */}
+          {/* <Route path="/disney" element={<DisneyPosts />} />   */}
           <Route path="/baseball" element={<BaseballPosts />} />  
           <Route path="/music" element={<MusicPosts />} /> 
       </Routes>
