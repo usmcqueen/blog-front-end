@@ -4,6 +4,7 @@ import { AuthContext } from "../context/authContext";
 import Logo from "../img/constlogo.png";
 
 
+
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
 

@@ -96,13 +96,13 @@ const Write = () => {
           <span>
             <b>Visibility:</b> Public
           </span>
-          <form action="/upload" method="POST" encType="multipart/form-data">
+          {/* <form action="/upload" method="POST" encType="multipart/form-data"> */}
             <input
               type="file"
               id="file"
               name="file"
               onChange={e => setFile(e.target.files[0])} />
-          </form>
+          {/* </form> */}
           <label className="file" htmlFor="file"> Upload Image </label>
           <div className="buttons">
             <button>Save as a Draft</button>
