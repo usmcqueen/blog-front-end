@@ -8,7 +8,6 @@ import moment from "moment";
 const Write = () => {
   const state = useLocation().state;
   // console.log(location)
-  // console.log(state);
   const [title, setTitle] = useState(state?.title || ""); 
   const [content, setContent] = useState(state?.content || ""); 
   const [file, setFile] = useState(null);

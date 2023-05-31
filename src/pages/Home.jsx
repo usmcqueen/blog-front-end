@@ -22,7 +22,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`${baseUrl}/api/posts${cat}`);
-        console.log(res.data)
+        // console.log(res.data)
         setPosts(res.data);
       } catch (error) {
         console.log('home error: ', error);
@@ -33,15 +33,15 @@ const Home = () => {
 
   const handleClick = (post) => {
     // Check if the user is logged in
-    const isLoggedIn = login();
+    // const isLoggedIn = login();
 
-    if (isLoggedIn) {
+    // if (isLoggedIn) {
       // User is logged in, proceed to the post details page
       navigate(`/post/${post.id}`);
-    } else {
+    // } else {
       // User is not logged in, redirect to the login page or a dedicated "login required" page
-      navigate("/login-required");
-    }
+      // navigate("/login-required");
+    // }
   };
 
 
@@ -56,7 +56,7 @@ const Home = () => {
         {posts.map((post) => (
           <div className="post" key={post.id}>
             <div className="img">
-              <img src={`/uploads/${post.img}`} alt="not showing" />
+              <img src={`/uploads/${post.img}`} alt="" />
             </div>
             <div className="content">
               <Link className="link" to={`/post/${post.id}`}>
