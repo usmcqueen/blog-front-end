@@ -59,13 +59,6 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser])
 
-  // useEffect(() => {
-  //   const accessToken = document.cookie
-  //   .split("; ")
-  //   .find((row) => row.startsWith("access_token="))
-  //   .split("=")[1];
-  //   console.log(accessToken);
-  // })
 
   useEffect(() => {
     // get the authentication token from the cookie when the component mounts

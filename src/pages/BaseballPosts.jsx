@@ -20,7 +20,6 @@ const BaseballPosts = () => {
   return (
     <div>
       <h2>Baseball Posts</h2>
-      {/* Render the baseball posts */}
       {baseballPosts.map((post) => (
         <div key={post.id}>
           <h3>{post.title}</h3>

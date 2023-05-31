@@ -20,7 +20,6 @@ const MusicPosts = () => {
   return (
     <div>
       <h2>Music Posts</h2>
-      {/* Render the music posts */}
       {musicPosts.map((post) => (
         <div key={post.id}>
           <h3>{post.title}</h3>

@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import DOMPurify from 'dompurify';
-// import myImage from '../../public/uploads/1684988964737bluefiary.jpeg'
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+
 
 const baseUrl = "http://localhost:8080"
 
@@ -11,6 +13,9 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   const cat = useLocation().search;
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
   // console.log('category', cat)
 
   useEffect(() => {
@@ -26,6 +31,20 @@ const Home = () => {
     fetchData();
   }, [cat]);
 
+  const handleClick = (post) => {
+    // Check if the user is logged in
+    const isLoggedIn = login();
+
+    if (isLoggedIn) {
+      // User is logged in, proceed to the post details page
+      navigate(`/post/${post.id}`);
+    } else {
+      // User is not logged in, redirect to the login page or a dedicated "login required" page
+      navigate("/login-required");
+    }
+  };
+
+
 
   const getText = (html) => {
     return DOMPurify.sanitize(html, { ALLOWED_TAGS: [] });
@@ -38,14 +57,13 @@ const Home = () => {
           <div className="post" key={post.id}>
             <div className="img">
               <img src={`/uploads/${post.img}`} alt="not showing" />
-              {/* <img src={`http://localhost:3000/public/uploads/1684988964737bluefiary.jpeg`} alt="hard code" /> */}
             </div>
             <div className="content">
               <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
               <p>{getText(post.content)}</p>
-              <Link className="link" to={`/post/${post.id}`}>
+              <Link className="link" to={`/post/${post.id}`} onClick={() => handleClick(post)}>
                 <button>Read More</button>
               </Link>
             </div>

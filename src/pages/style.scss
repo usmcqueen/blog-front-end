@@ -22,10 +22,9 @@ $bright-blue: #2454e5;
     justify-content: center;
 
     .container {
-        // width: 100%;
-        // position: relative;
-        // padding: 2em;
-        // background-color: $light-gray;
+        width: 100%;
+        position: relative;
+        padding: 2em;
         width: 1024px;
 
         .link {
@@ -39,8 +38,10 @@ $bright-blue: #2454e5;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            max-width: 400px;
-            //    width: auto;
+            // max-width: 400px;
+            // width: auto;
+            width:100%;
+
             background-color: $neon-blue;
 
             h1 {
@@ -112,7 +113,19 @@ $bright-blue: #2454e5;
         }
     }
 }
+@media (max-width: 600px) {
+    .app .container {
+        padding: 1em;
+    }
 
+    .app .container .auth {
+        height: auto;
+    }
+
+    .app .container .auth form {
+        padding: 20px;
+    }
+}
 
 // NAVBAR
 
@@ -164,6 +177,7 @@ $bright-blue: #2454e5;
         }
     }
 }
+
 
 // Footer
 

@@ -20,7 +20,6 @@ const TechnologyPosts = () => {
   return (
     <div>
       <h2>Technology Posts</h2>
-      {/* Render the Technology posts */}
       {TechnologyPosts.map((post) => (
         <div key={post.id}>
           <h3>{post.title}</h3>

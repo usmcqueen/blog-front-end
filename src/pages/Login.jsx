@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-// import "./style.scss";
+import "./style.scss";
 
 
 const Login = () => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
-  
+
   })
   const [error, setError] = useState(null);
   // console.log(inputs.username);
@@ -38,27 +38,25 @@ const Login = () => {
   return (
     <div className="auth">
       <h1>Login</h1>
-        {/* <div className="container"> */}
-        <form>
-          <input 
+      <form>
+        <input
           required
-          type="text" 
-          placeholder="username" 
-          name="username" 
+          type="text"
+          placeholder="username"
+          name="username"
           onChange={handleChange} />
-          <input 
+        <input
           required
-          type="password" 
-          placeholder="password" 
-          name="password" 
+          type="password"
+          placeholder="password"
+          name="password"
           onChange={handleChange} />
-          <button onClick={handleSubmit}>Login</button>
-          {error && <p>{error}</p>}
-          <span>
-            Need an account? <Link to="/register">Register</Link>
-          </span>
-        </form>
-      {/* </div> */}
+        <button onClick={handleSubmit}>Login</button>
+        {error && <p>{error}</p>}
+        <span>
+          Need an account? <Link to="/register">Register</Link>
+        </span>
+      </form>
     </div>
   );
 };

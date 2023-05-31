@@ -22,7 +22,7 @@ const Single = () => {
   // setPostId(uid)
   const navigate = useNavigate();
 
-  // const postId = location.pathname.split("/")[2];
+  const userId = location.pathname.split("/")[2];
 
   // const { userId, id } = useParams();
   const { currentUser } = useContext(AuthContext);
@@ -112,11 +112,11 @@ const Single = () => {
         <div className="user">
           {post.userImg && <img src={post.userImg} alt="" />}
           <div className="info">
-            <span>{currentUser.username}</span>
+            <span>{currentUser?.username}</span>
             {/* <span>{post.username}</span> */}
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
-          {currentUser.username === post.username && (
+          {currentUser?.username === post.username && (
             <div className="edit">
               <Link to={`/write?edit=2`} state={post}>
                 <img src={Edit} alt="" />

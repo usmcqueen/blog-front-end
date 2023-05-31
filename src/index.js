@@ -9,6 +9,8 @@ axios.defaults.headers.common["Content-Type"] = "multipart/form-data";
 const root =createRoot(document.getElementById("root"));
 
 // console.log("Rendering app...");
+
+
 root.render(
   <React.StrictMode>
     <AuthContextProvider>
