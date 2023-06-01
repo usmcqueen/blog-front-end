@@ -1,70 +1,39 @@
-$neon-yellow: #b8fb3c;
-$aqua: #5ce5d5;
-$periwinkle: #8386f5;
-$neon-blue: #3d43b4;
-$black: #041348;
-$black-forest: #083e12;
-$neon-green: #1afe49;
-$gun-metal: #555555;
-$neon: #41f71d;
-$dark-gray: #656565;
+$neon: #b9e7e7;
 $light-gray: #a9a9a9;
-$sky-blue: #a0ffe3;
-$light-green: #65dc98;
-$chargray: #8d8980;
-$blue-violet: #575267;
 $dark: #222035;
+
+$neon: #1afe49;
 $bright-blue: #2454e5;
 
-// need to figure out media queries to make mobile responsive
 .app {
     display: flex;
     justify-content: center;
-
     .container {
         width: 100%;
-        position: relative;
-        padding: 2em;
-        width: 1024px;
+        padding: 1.2em;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
 
         .link {
             text-decoration: none;
             color: inherit;
         }
-        // login & register
+        //LOGIN & REGISTER
+
         .auth {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            // max-width: 400px;
-            // width: auto;
-            width:100%;
-
-            background-color: $neon-blue;
+            background-color: $light-gray;
 
             h1 {
                 font-size: 20px;
-                color: $aqua;
+                color: $bright-blue;
                 margin-bottom: 20px;
-                padding: 25px 30px;
-                background-color: #050801;
-                color: #03e9f4;
-                font-weight: bold;
-                border: none;
-                border-radius: 5px;
-                letter-spacing: 2px;
-                overflow: hidden;
-                transition: 0.5s;
-                cursor: pointer;
-
-                &:hover {
-                    background: #03e9f4;
-                    color: #050801;
-                    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
-                    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-                }
             }
 
             form {
@@ -72,390 +41,398 @@ $bright-blue: #2454e5;
                 flex-direction: column;
                 padding: 50px;
                 background-color: white;
-                // width: 100%;
                 width: 200px;
                 gap: 20px;
 
                 input {
                     padding: 10px;
                     border: none;
-                    border-bottom: 1px solid $gun-metal;
+                    border-bottom: 1px solid gray;
                 }
 
                 button {
                     padding: 10px;
                     border: none;
-                    border-radius: 40px;
-                    // background-color: #a0ffe3;
-                    background-image: linear-gradient(to bottom, #66ff00, #a1ff00);
-
-                    &:hover {
-                        background: #2454e5;
-                        color: #050801;
-                        box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
-                        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-                    }
+                    background-color: $bright-blue;
                     cursor: pointer;
-                    color: #3d43b4;
+                    color: white;
                 }
 
                 p {
-                    font-size: 12px;
+                    font-size: 14px;
                     color: red;
                     text-align: center;
                 }
 
                 span {
-                    font-size: 12px;
+                    font-size: 14px;
                     text-align: center;
+                    color: red;
                 }
             }
         }
-    }
-}
-@media (max-width: 600px) {
-    .app .container {
-        padding: 1em;
-    }
 
-    .app .container .auth {
-        height: auto;
-    }
+        //NAVBAR
 
-    .app .container .auth form {
-        padding: 20px;
-    }
-}
-
-// NAVBAR
-
-.navbar {
-    .container {
-        padding: 10px 0px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .logo {
-            img {
-                width: 120px;
-            }
-        }
-
-        .links {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            h6 {
-                font-size: 16px;
-                font-weight: 300;
-            }
-
-            span {
-                cursor: pointer;
-            }
-
-            .write {
-                background-color: #1afe49;
-                width: 50px;
-                border-radius: 2em;
+        .navbar {
+            .container {
+                padding: 10px 0px;
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                font-weight: 300;
-                // border: 1px solid white;
+                justify-content: space-between;
 
-                &:hover {
-                    width: 48px;
-                    height: 48px;
-                    color: #083e12;
-                    background-color: #3d43b4;
-                    border: 1px solid $gun-metal;
+                .logo {
+                    img {
+                        width: 120px;
+                        border-radius: 0.5em;
+                    }
+                }
+                .links {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    h6 {
+                        font-size: 16px;
+                        font-weight: 300;
+                    }
+
+                    span {
+                        cursor: pointer;
+                    }
+
+                    .write {
+                        background-color: $neon;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 0.5em;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 300;
+                        border: 1px solid white;
+
+                        &:hover {
+                            color: $bright-blue;
+                            background-color: white;
+                            border: 1px solid $bright-blue;
+                        }
+                    }
+                }
+            }
+            @media (max-width: 768px) {
+                .navbar {
+                    .container {
+                        flex-direction: column;
+
+                        .links {
+                            margin-top: 10px;
+                            gap: 5px;
+
+                            .write {
+                                width: 38px;
+                                height: 38px;
+                                font-size: 14px;
+                            }
+                        }
+                    }
                 }
             }
         }
-    }
-}
 
+        //FOOTER
 
-// Footer
-
-footer {
-    margin-top: 75px;
-    padding: 20px;
-    background-color: #1afe49;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    img {
-        height: 60px;
-    }
-}
-
-// Home
-
-.home {
-    .posts {
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 150px;
-
-        .post {
+        footer {
+            margin-top: 100px;
+            padding: 20px;
+            background-color: $neon;
             display: flex;
-            gap: 100px;
-
-            &:nth-child(2n + 1) {
-                flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            img {
+                height: 50px;
             }
+        }
 
-            .img {
-                flex: 2;
-                position: relative;
+        //HOME
 
-                &::after {
-                    content: "";
-                    width: 100%;
-                    height: 100%;
-                    background-color: #1afe49;
-                    position: absolute;
-                    top: 20px;
-                    left: -20px;
-                    z-index: -1;
+        .home {
+            .posts {
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                gap: 150px;
+
+                @media (max-width: 768px) {
+                    flex-direction: column;
                 }
 
-                img {
-                    width: 100%;
-                    max-height: 400px;
-                    object-fit: cover;
+                .post {
+                    display: flex;
+                    gap: 100px;
+                    @media (max-width: 768px) {
+                        flex-direction: column;
+                    }
+
+                    &:nth-child(2n + 1) {
+                        flex-direction: row-reverse;
+                    }
+
+                    .img {
+                        flex: 2;
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            width: 100%;
+                            height: 100%;
+                            background-color: $neon;
+                            position: absolute;
+                            top: 20px;
+                            left: -20px;
+                            z-index: -1;
+                        }
+
+                        img {
+                            width: 100%;
+                            max-height: 400px;
+                            object-fit: cover;
+                        }
+                    }
+
+                    .content {
+                        flex: 3;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        h1 {
+                            font-size: 36px;
+                        }
+
+                        p {
+                            font-size: 16px;
+                        }
+
+                        button {
+                            width: max-content;
+                            padding: 10px 20px;
+                            border: none;
+                            cursor: pointer;
+                            background-color: white;
+                            border: 1px solid $bright-blue;
+                            color: $bright-blue;
+
+                            &:hover {
+                                border: 1px solid white;
+                                background-color: $neon;
+                                color: black;
+                            }
+                        }
+                    }
                 }
+            }
+        }
+
+        //SINGLE
+
+        .single {
+            display: flex;
+            gap: 50px;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
             }
 
             .content {
-                flex: 3;
+                flex: 5;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                gap: 30px;
+
+                img {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
+                }
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 14px;
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    span {
+                        font-weight: bold;
+                    }
+                }
+
+                .edit {
+                    display: flex;
+                    gap: 5px;
+
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+                    }
+                }
 
                 h1 {
-                    font-size: 48px;
+                    font-size: 42px;
+                    color: #333;
                 }
 
                 p {
-                    font-size: 18px;
+                    text-align: justify;
+                    line-height: 30px;
+                }
+            }
+            .menu {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                h1 {
+                    font-size: 20px;
+                    color: #555;
                 }
 
-                button {
-                    width: max-content;
-                    padding: 10px 20px;
-                    border: none;
-                    cursor: pointer;
-                    border-radius: 6px;
-                    background-color: white;
-                    border: 1px solid $neon-blue;
-                    color: $neon-blue;
+                .post {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
 
-                    &:hover {
-                        border: 1px solid white;
-                        background-color: $neon-green;
-                        color: $gun-metal;
+                    img {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+
+                    h2 {
+                        color: #555;
+                    }
+
+                    button {
+                        width: max-content;
+                        padding: 7.5px 15px;
+                        border: none;
+                        cursor: pointer;
+                        color: $bright-blue;
+                        background-color: white;
+                        border: 1px solid $bright-blue;
+
+                        &:hover {
+                            border: 1px solid white;
+                            background-color: $neon;
+                            color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        //WRITE
+
+        .add {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+            }
+
+            .content {
+                flex: 5;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                input {
+                    padding: 10px;
+                    border: 1px solid lightgray;
+                }
+
+                .editorContainer {
+                    height: 300px;
+                    overflow: scroll;
+                    border: 1px solid lightgray;
+
+                    .editor {
+                        height: 100%;
+                        border: none;
+                    }
+                }
+            }
+
+            .menu {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .item {
+                    border: 1px solid lightgray;
+                    padding: 10px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    font-size: 12px;
+                    color: #555;
+
+                    h1 {
+                        font-size: 20px;
+                    }
+
+                    .file {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+                    .buttons {
+                        display: flex;
+                        justify-content: space-between;
+
+                        :first-child {
+                            cursor: pointer;
+                            color: $bright-blue;
+                            background-color: white;
+                            border: 1px solid $bright-blue;
+                            padding: 3px 5px;
+                        }
+                        :last-child {
+                            cursor: pointer;
+                            color: white;
+                            background-color: $bright-blue;
+                            border: 1px solid $bright-blue;
+                            padding: 3px 5px;
+                        }
+                    }
+
+                    .cat {
+                        display: flex;
+                        align-items: center;
+                        gap: 2px;
+                        color: $bright-blue;
                     }
                 }
             }
         }
     }
-}
 
-// Single
+    @media (max-width: 450px) {
+        width: 100vw;
 
-.single {
-    display: flex;
-    gap: 50px;
-
-    .content {
-        flex: 5;
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-
-        img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .user {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-
-            img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: cover;
-            }
-
-            span {
-                font-weight: bold;
-            }
-        }
-
-        .edit {
-            display: flex;
-            gap: 5px;
-
-            img {
-                width: 20px;
-                height: 20px;
-                cursor: pointer;
-            }
-        }
-
-        h1 {
-            font-size: 42px;
-            color: $gun-metal;
-        }
-        p {
-            text-align: justify;
-            line-height: 30px;
-        }
-    }
-
-    .menu {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-
-        h1 {
-            font-size: 20px;
-            color: $gun-metal;
-        }
-
-        .post {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-            }
-
-            h2 {
-                color: $gun-metal;
-            }
-
-            button {
-                width: max-content;
-                padding: 10px 20px;
-                // padding: 7.5px 15px;
-                border: none;
-                cursor: pointer;
-                border-radius: 6px;
-                background-color: white;
-                border: 1px solid $neon-blue;
-                color: $neon-blue;
-
-                &:hover {
-                    border: 1px solid white;
-                    background-color: $neon-green;
-                    color: $black-forest;
-                }
-            }
-        }
-    }
-}
-
-// WRITE
-.add {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-
-    .content {
-        flex: 5;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        input {
-            padding: 10px;
-            border: 1px solid $light-gray;
-        }
-
-        .editorContainer {
-            height: 300px;
-            overflow: scroll;
-            border: 1px solid $light-gray;
-
-            .editor {
-                height: 100%;
-                border: none;
-            }
-        }
-    }
-
-    .menu {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-        .item {
-            border: 1px solid $light-gray;
-            padding: 10px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            font-size: 12px;
-            color: $gun-metal;
-
-            h1 {
-                font-size: 20px;
-            }
-
-            .file {
-                text-decoration: underline;
-                cursor: pointer;
-            }
-
-            .buttons {
-                display: flex;
-                justify-content: space-between;
-                // margin-top: 10px;
-
-                :first-child {
-                    cursor: pointer;
-                    color: #2454e5;
-                    background-color: $neon-green;
-                    border: 1px solid #2454e5;
-                    border-radius: 2em;
-                    padding: 3px 5 px;
-                }
-
-                :last-child {
-                    cursor: pointer;
-                    color: #2454e5;
-                    background-color: $neon-green;
-                    border: 1px solid #2454e5;
-                    border-radius: 2em;
-                    padding: 3px 5 px;
-                }
-            }
-
-            .cat {
-                display: flex;
-                align-items: center;
-                gap: 2px;
-                color: #2454e5;
-            }
-        }
+        background-color: red;
     }
 }

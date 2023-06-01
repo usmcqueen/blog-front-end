@@ -8,10 +8,10 @@ import moment from "moment";
 const Write = () => {
   const state = useLocation().state;
   // console.log(location)
-  const [title, setTitle] = useState(state?.title || ""); 
-  const [content, setContent] = useState(state?.content || ""); 
+  const [title, setTitle] = useState(state?.title || "");
+  const [content, setContent] = useState(state?.content || "");
   const [file, setFile] = useState(null);
-  const [cat, setCat] = useState(state?.cat || ""); 
+  const [cat, setCat] = useState(state?.cat || "");
 
   const navigate = useNavigate();
   // const date = format(new Date(), "yyyy-MM-dd HH:mm:ss");
@@ -79,9 +79,9 @@ const Write = () => {
       <div className="menu">
         <div className="item">
           <h1>Publish</h1>
-          <span>
+          {/* <span>
             <b>Staus:</b>Draft
-          </span>
+          </span> */}
           <span>
             <b>Visibility:</b> Public
           </span>
@@ -96,7 +96,7 @@ const Write = () => {
             Upload Image{" "}
           </label>
           <div className="buttons">
-            <button>Save as a Draft</button>
+            {/* <button>Save as a Draft</button> */}
             <button onClick={handleClick}> Publish </button>
           </div>
         </div>

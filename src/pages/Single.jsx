@@ -132,12 +132,6 @@ const Single = () => {
       </div>
       <Menu cat={post.cat} />
 
-      {/* Form for creating a new post */}
-      <form onSubmit={handleSubmit}>
-        <input type="file" id="fileInput" ref={fileInput} />
-        <button type="submit"> Submit </button>
-      </form>
-
     </div>
   );
 };
