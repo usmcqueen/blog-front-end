@@ -21,7 +21,7 @@ import "./pages/style.scss";
 
 // Include credential with every request by default 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'http://127.0.0.1:8080';
 
 const Layout = ({ children }) => {
   return (

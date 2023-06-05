@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 
 
-const baseUrl = "http://localhost:8080"
+
+const baseUrl = "http://127.0.0.1:8080"
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -36,19 +37,18 @@ const Home = () => {
     // const isLoggedIn = login();
 
     // if (isLoggedIn) {
-      // User is logged in, proceed to the post details page
-      navigate(`/post/${post.id}`);
+    // User is logged in, proceed to the post details page
+    navigate(`/post/${post.id}`);
     // } else {
-      // User is not logged in, redirect to the login page or a dedicated "login required" page
-      // navigate("/login-required");
+    // User is not logged in, redirect to the login page or a dedicated "login required" page
+    // navigate("/login-required");
     // }
   };
 
-
-
   const getText = (html) => {
-    return DOMPurify.sanitize(html, { ALLOWED_TAGS: [] });
-  };
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
 
   return (
     <div className="home">
@@ -62,7 +62,12 @@ const Home = () => {
               <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
-              <p>{getText(post.content)}</p>
+              {/* <p>{getText(post.content)}</p> */}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(post.content),
+                }}
+              ></p>
               <Link className="link" to={`/post/${post.id}`} onClick={() => handleClick(post)}>
                 <button>Read More</button>
               </Link>

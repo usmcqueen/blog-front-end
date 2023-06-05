@@ -21,7 +21,7 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(
-        "http://localhost:8080/api/upload",
+        "http://127.0.0.1:8080/api/upload",
         formData
       );
       return res.data;
@@ -39,7 +39,7 @@ const Write = () => {
       let res;
 
       if (state) {
-        res = await axios.put(`http://localhost:8080/api/posts/${state.id}`, {
+        res = await axios.put(`http://127.0.0.1:8080/api/posts/${state.id}`, {
           title: title,
           content: content,
           cat: cat,
@@ -47,7 +47,7 @@ const Write = () => {
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       } else {
-        res = await axios.post(`http://localhost:8080/api/posts/`, {
+        res = await axios.post(`http://127.0.0.1:8080/api/posts/`, {
           title: title,
           content: content,
           cat: cat,
@@ -56,10 +56,9 @@ const Write = () => {
         });
       }
       console.log(res.data);
-      // navigate(`/category/${cat}`); 
       navigate("/");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 
@@ -79,13 +78,12 @@ const Write = () => {
       <div className="menu">
         <div className="item">
           <h1>Publish</h1>
-          {/* <span>
-            <b>Staus:</b>Draft
-          </span> */}
           <span>
             <b>Visibility:</b> Public
           </span>
           <input
+            style={{ display: "none" }}
+
             type="file"
             id="file"
             name="file"
@@ -96,7 +94,6 @@ const Write = () => {
             Upload Image{" "}
           </label>
           <div className="buttons">
-            {/* <button>Save as a Draft</button> */}
             <button onClick={handleClick}> Publish </button>
           </div>
         </div>

@@ -1,9 +1,9 @@
-$neon: #b9e7e7;
-$light-gray: #a9a9a9;
+$dark-gray: #656161;
+$light-gray: #cdcbcb;
+$gray: #cfcdcdf6;
 $dark: #222035;
-
-$neon: #1afe49;
-$bright-blue: #2454e5;
+$neon: #56e172;
+$bright-blue: #7795ee;
 
 .app {
     display: flex;
@@ -50,12 +50,42 @@ $bright-blue: #2454e5;
                     border-bottom: 1px solid gray;
                 }
 
+                // button {
+                //     padding: 10px;
+                //     border: none;
+                //     background-color: $bright-blue;
+                //     cursor: pointer;
+                //     color: white;
+                // }
+                // button {
+                //     width: max-content;
+                //     padding: 10px 20px;
+                //     border: none;
+                //     cursor: pointer;
+                //     border-radius: 6px;
+                //     background-color: white;
+                //     border: 1px solid $bright-blue;
+                //     color: $bright-blue;
+
+                //     &:hover {
+                //         border: 1px solid white;
+                //         background-color: $neon;
+                //         color: $dark;
+                //     }
+                // }
                 button {
                     padding: 10px;
-                    border: none;
-                    background-color: $bright-blue;
+                    border: 5px;
+                    border-radius: 0.625em;
+                    background-image: linear-gradient(to bottom, $bright-blue, #9fb5f6);
+
+                    &:hover {
+                        background: $neon;
+                        color: #050801;
+                        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+                    }
                     cursor: pointer;
-                    color: white;
+                    color: $neon;
                 }
 
                 p {
@@ -84,17 +114,18 @@ $bright-blue: #2454e5;
                 .logo {
                     img {
                         width: 120px;
-                        border-radius: 0.5em;
+                        border-radius: 0.625em;
                     }
                 }
                 .links {
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+                    gap: 20px;
 
                     h6 {
                         font-size: 16px;
                         font-weight: 300;
+                        color: $bright-blue;
                     }
 
                     span {
@@ -105,7 +136,7 @@ $bright-blue: #2454e5;
                         background-color: $neon;
                         width: 50px;
                         height: 50px;
-                        border-radius: 0.5em;
+                        border-radius: 0.625em;
                         display: flex;
                         align-items: center;
                         justify-content: center;
@@ -146,6 +177,7 @@ $bright-blue: #2454e5;
             margin-top: 100px;
             padding: 20px;
             background-color: $neon;
+            border-radius: 0.625em;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -188,6 +220,7 @@ $bright-blue: #2454e5;
                             width: 100%;
                             height: 100%;
                             background-color: $neon;
+                            border-radius: 0.625em;
                             position: absolute;
                             top: 20px;
                             left: -20px;
@@ -196,6 +229,7 @@ $bright-blue: #2454e5;
 
                         img {
                             width: 100%;
+                            border-radius: 0.625em;
                             max-height: 400px;
                             object-fit: cover;
                         }
@@ -218,6 +252,7 @@ $bright-blue: #2454e5;
                         button {
                             width: max-content;
                             padding: 10px 20px;
+                            border-radius: 0.625em;
                             border: none;
                             cursor: pointer;
                             background-color: white;
@@ -227,7 +262,7 @@ $bright-blue: #2454e5;
                             &:hover {
                                 border: 1px solid white;
                                 background-color: $neon;
-                                color: black;
+                                color: $dark-gray;
                             }
                         }
                     }
@@ -254,6 +289,7 @@ $bright-blue: #2454e5;
                 img {
                     width: 100%;
                     height: 300px;
+                    border-radius: 0.625em;
                     object-fit: cover;
                 }
 
@@ -293,6 +329,7 @@ $bright-blue: #2454e5;
                 p {
                     text-align: justify;
                     line-height: 30px;
+                    list-style-position: inside;
                 }
             }
             .menu {
@@ -314,6 +351,7 @@ $bright-blue: #2454e5;
                     img {
                         width: 100%;
                         height: 200px;
+                        border-radius: 0.625em;
                         object-fit: cover;
                     }
 
@@ -329,11 +367,12 @@ $bright-blue: #2454e5;
                         color: $bright-blue;
                         background-color: white;
                         border: 1px solid $bright-blue;
+                        border-radius: 0.625em;
 
                         &:hover {
                             border: 1px solid white;
                             background-color: $neon;
-                            color: black;
+                            color: $dark-gray;
                         }
                     }
                 }
@@ -433,6 +472,6 @@ $bright-blue: #2454e5;
     @media (max-width: 450px) {
         width: 100vw;
 
-        background-color: red;
+        background-color: $gray;
     }
 }

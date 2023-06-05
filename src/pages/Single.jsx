@@ -4,29 +4,25 @@ import { useParams } from "react-router-dom";
 import Edit from "../img/edit.png";
 import Delete from "../img/delete.png";
 import Menu from "../components/Menu";
-// import { formatDistanceToNow } from "date-fns";
 import moment from "moment";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext.js";
-// import DOMPurify from "dompurify";
-
+import DOMPurify from "dompurify";
 
 const Single = () => {
 
   const [post, setPost] = useState({});
-  // const [postId, setPostId] = useState('')
   const location = useLocation();
   const uid = useParams().uid
-  // setPostId(uid)
   const navigate = useNavigate();
 
   const userId = location.pathname.split("/")[2];
 
   // const { userId, id } = useParams();
   const { currentUser } = useContext(AuthContext);
-  const fileInput = useRef(null); // Define fileInput using useRef
+  const fileInput = useRef(null);
 
   // console.log('postid: ', postId)
 
@@ -44,15 +40,6 @@ const Single = () => {
     fetchData();
   }, [uid]);
 
-  // const handleDelete = async () => {
-  //   try {
-  //     const res = await axios.delete(`/api/posts/${uid}`);
-  //     console.log(res.data);
-  //     navigate("/");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
   const handleDelete = (req, res) => {
     axios
@@ -73,14 +60,12 @@ const Single = () => {
 
   const handleSubmit = async () => {
     try {
-      // Update the form data with the new values
       const formData = new FormData();
       formData.append("title", post.title);
       formData.append("content", post.content);
       formData.append("cat", post.cat);
       formData.append("img", fileInput.current.files[0]);
 
-      // Make the POST request to update the post
       await axios.post(`/posts/${uid}`, formData);
       navigate("/");
     } catch (error) {
@@ -89,21 +74,6 @@ const Single = () => {
 
   };
 
-  // const formattedDate = new Date(post.date);
-  // const distanceToNow = formatDistanceToNow(formattedDate, { addSuffix: true, includeSeconds: true });
-
-
-  //   try {
-  //     await fetch("/addPost", {
-  //       method: "POST",
-  //       body: formData,
-  //     });
-  //     // Handle the response from the server
-  //   } catch (error) {
-  //     // Handle any errors
-  //     console.error(error);
-  //   }
-  // };
 
   return (
     <div className="single">
@@ -112,8 +82,7 @@ const Single = () => {
         <div className="user">
           {post.userImg && <img src={post.userImg} alt="" />}
           <div className="info">
-            <span>{currentUser?.username}</span>
-            {/* <span>{post.username}</span> */}
+            <span>{post.username}</span>
             <p>Posted {moment(post.date).fromNow()}</p>
           </div>
           {currentUser?.username === post.username && (
@@ -126,9 +95,12 @@ const Single = () => {
           )}
         </div>
         <h1>{post.title}</h1>
-        <p>
-          {getText(post.content)}
-        </p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post.content),
+          }}
+        ></p>
+
       </div>
       <Menu cat={post.cat} />
 
@@ -137,3 +109,4 @@ const Single = () => {
 };
 
 export default Single;
+
