@@ -8,7 +8,10 @@ import { AuthContext } from "../context/authContext";
 
 
 
-const baseUrl = "http://127.0.0.1:8080"
+// const baseUrl = "http://127.0.0.1:8080"
+
+const baseUrl = "https://blog-api-capstone.herokuapp.com/"
+
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
