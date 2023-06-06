@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseUrl}/api/posts${cat}`);
+        const res = await axios.get(`api/posts${cat}`);
         // console.log(res.data)
         setPosts(res.data);
       } catch (error) {
