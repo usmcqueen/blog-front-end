@@ -7,7 +7,7 @@ const TechnologyPosts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/posts?cat=Technology");
+        const response = await axios.get("api/posts?cat=Technology");
         setTechnologyPosts(response.data);
       } catch (error) {
         console.error(error);

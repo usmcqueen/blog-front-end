@@ -7,7 +7,7 @@ const BaseballPosts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/posts?cat=baseball");
+        const response = await axios.get("api/posts?cat=baseball");
         setBaseballPosts(response.data);
       } catch (error) {
         console.error(error);

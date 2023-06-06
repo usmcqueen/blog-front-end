@@ -7,7 +7,7 @@ const MusicPosts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/posts?cat=music");
+        const response = await axios.get("api/posts?cat=music");
         setMusicPosts(response.data);
       } catch (error) {
         console.error(error);

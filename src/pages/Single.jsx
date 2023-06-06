@@ -29,7 +29,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/posts/${uid}`);
+        const res = await axios.get(`api/posts/${uid}`);
         // console.log('single post: ', res.data)
         setPost(res.data);
       } catch (err) {
@@ -43,7 +43,7 @@ const Single = () => {
 
   const handleDelete = (req, res) => {
     axios
-      .delete(`/api/posts/${uid}`)
+      .delete(`api/posts/${uid}`)
       .then(res => {
         console.log(res.data);
         navigate("/");

@@ -21,7 +21,7 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(
-        "http://127.0.0.1:8080/api/upload",
+        "api/upload",
         formData
       );
       return res.data;
@@ -39,7 +39,7 @@ const Write = () => {
       let res;
 
       if (state) {
-        res = await axios.put(`http://127.0.0.1:8080/api/posts/${state.id}`, {
+        res = await axios.put(`api/posts/${state.id}`, {
           title: title,
           content: content,
           cat: cat,
@@ -47,7 +47,7 @@ const Write = () => {
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       } else {
-        res = await axios.post(`http://127.0.0.1:8080/api/posts/`, {
+        res = await axios.post(`api/posts/`, {
           title: title,
           content: content,
           cat: cat,
