@@ -43,7 +43,7 @@ const Write = () => {
           title: title,
           content: content,
           cat: cat,
-          img: file ? imgUrl : null,
+          img: file ? imgUrl : "",
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       } else {
@@ -51,7 +51,7 @@ const Write = () => {
           title: title,
           content: content,
           cat: cat,
-          img: file ? imgUrl : null,
+          img: file ? imgUrl : "",
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       }
