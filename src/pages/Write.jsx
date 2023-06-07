@@ -33,7 +33,7 @@ const Write = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const imgUrl = await upload();
-    // console.log(imgUrl);
+    console.log(imgUrl);
 
     try {
       let res;
