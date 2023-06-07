@@ -82,7 +82,7 @@ const Write = () => {
             <b>Visibility:</b> Public
           </span>
           <input
-            style={{ display: "none" }}
+            // style={{ display: "none" }}
 
             type="file"
             id="file"
