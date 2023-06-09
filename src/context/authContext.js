@@ -4,7 +4,7 @@ import { createContext, useEffect, useState, useMemo } from "react";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  console.log('auth context ran')
+  // console.log('auth context ran')
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user') || null));
   // console.log(currentUser);
 
@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
     } catch (error) {
       console.error("Error during login", error);
     }
-    console.log('app user context: ', currentUser)
+    // console.log('app user context: ', currentUser)
   };
 
   const logout = async () => {

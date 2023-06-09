@@ -10,7 +10,7 @@ import { AuthContext } from "../context/authContext";
 
 // const baseUrl = "http://127.0.0.1:8080"
 
-const baseUrl = "https://blog-api-capstone.herokuapp.com/"
+// const baseUrl = "https://blog-api-capstone.herokuapp.com/"
 
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`api/posts${cat}`);
+        const res = await axios.get(`/api/posts${cat}`);
         // console.log(res.data)
         setPosts(res.data);
       } catch (error) {

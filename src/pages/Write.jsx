@@ -10,7 +10,7 @@ const Write = () => {
   // console.log(location)
   const [title, setTitle] = useState(state?.title || "");
   const [content, setContent] = useState(state?.content || "");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
   const [cat, setCat] = useState(state?.cat || "");
 
   const navigate = useNavigate();
@@ -21,25 +21,27 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post(
-        "api/upload",
+        "http://localhost:8080/api/upload",
         formData
       );
+      console.log('upload response: ' , res)
       return res.data;
     } catch (error) {
-      console.log(error);
+      console.log('upload error: ', error);
     }
   };
+  
 
   const handleClick = async (e) => {
     e.preventDefault();
     const imgUrl = await upload();
-    console.log(imgUrl);
+    console.log('image url', imgUrl);
 
     try {
       let res;
 
       if (state) {
-        res = await axios.put(`api/posts/${state.id}`, {
+        res = await axios.put(`http://localhost:8080/api/posts/${state.id}`, {
           title: title,
           content: content,
           cat: cat,
@@ -47,7 +49,7 @@ const Write = () => {
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       } else {
-        res = await axios.post(`api/posts/`, {
+        res = await axios.post(`http://localhost:8080/api/posts/`, {
           title: title,
           content: content,
           cat: cat,
