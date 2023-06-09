@@ -25,6 +25,7 @@ const Write = () => {
         formData
       );
       console.log('upload response: ' , res)
+      return res.data.urls.url; 
       return res.data;
     } catch (error) {
       console.log('upload error: ', error);

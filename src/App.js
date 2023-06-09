@@ -21,9 +21,9 @@ import "./pages/style.scss";
 
 // Include credential with every request by default 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'https://blog-api-capstone.herokuapp.com/';
+// axios.defaults.baseURL = 'https://blog-api-capstone.herokuapp.com/';
 
-// axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'http://localhost:8080';
 
 const Layout = ({ children }) => {
   return (
