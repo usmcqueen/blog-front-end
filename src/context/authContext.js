@@ -16,7 +16,6 @@ export const AuthContextProvider = ({ children }) => {
         inputs,
         {withCredentials: true},
       );
-      console.log('login response', res.data)
 
       setCurrentUser(res.data);
 

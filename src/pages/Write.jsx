@@ -25,7 +25,7 @@ const Write = () => {
         formData
       );
       console.log('upload response: ' , res)
-      return res.data.urls.url; 
+      // return res.data.urls.url; 
       return res.data;
     } catch (error) {
       console.log('upload error: ', error);
@@ -35,8 +35,8 @@ const Write = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    const imgUrl = await upload();
-    console.log('image url', imgUrl);
+    const {imageURL } = await upload();
+    console.log('image url', imageURL);
 
     try {
       let res;
@@ -46,7 +46,7 @@ const Write = () => {
           title: title,
           content: content,
           cat: cat,
-          img: file ? imgUrl : "",
+          img: file ? imageURL : "",
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       } else {
@@ -54,7 +54,7 @@ const Write = () => {
           title: title,
           content: content,
           cat: cat,
-          img: file ? imgUrl : "",
+          img: file ? imageURL : "",
           date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
         });
       }
