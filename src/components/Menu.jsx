@@ -30,7 +30,7 @@ const Menu = ({ cat }) => {
       <h1> Other posts you may like </h1>
       {posts.map((post) => (
         <div className="post" key={post.id}>
-          <img src={`/uploads/${post.img}`} alt="" />
+          <img src={post.img} alt="" />
           <h2>{post.title}</h2>
           <button onClick={() =>
             handleReadMore(post.id)}
